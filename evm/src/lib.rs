@@ -8,6 +8,7 @@ use revm::{
     },
     EVM,
 };
+use zeth::*;
 use runtime::{print, get_prover_input, coprocessors::{get_data, get_data_len}};
 
 use models::*;
@@ -17,6 +18,7 @@ use alloc::vec::Vec;
 use alloc::vec;
 use alloc::string::String;
 use alloc::string::ToString;
+
 
 #[no_mangle]
 fn main() {

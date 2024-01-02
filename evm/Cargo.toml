@@ -3,10 +3,23 @@ name = "evm"
 version = "0.1.0"
 edition = "2021"
 
+[patch.crates-io]
+# use optimized risc0 circuit
+revm = { git = "https://github.com/johntaiko/revm", branch = "feat/taiko" }
+revm-primitives = { git = "https://github.com/johntaiko/revm", branch = "feat/taiko" }
+
+
 [dependencies]
-#revm = { version = "3.5.0", default-features = false }
-#revm = { path = "../../revm/crates/revm", default-features = false, features = [ "serde" ] }
-revm = { git = "https://github.com/powdr-labs/revm", branch = "serde-no-std", default-features = false, features = [ "serde" ] }
+zeth-lib = {  git = "https://github.com/CeciliaZ030/zeth.git", branch= "powdr", package =  "zeth-lib", features = ["taiko"]}
+
+revm = { version = "3.5", default-features = false, features = [
+    "std",
+    "serde",
+    "taiko",
+    "optional_no_base_fee",
+    "optional_balance_check",
+] }
+
 runtime = { path = "../../powdr/riscv/runtime" }
 models = { path = "../models" }
 

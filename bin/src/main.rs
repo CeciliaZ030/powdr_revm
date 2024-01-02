@@ -1,8 +1,10 @@
 use riscv::{compile_rust, CoProcessors};
-use compiler::compile_asm_string_with_callback;
+// use compiler::compile_asm_string_with_callback;
 use number::{GoldilocksField, FieldElement};
+use riscv_executor::ExecMode;
 
 use std::path::{Path, PathBuf};
+use zeth_lib::*;
 
 use models::*;
 
@@ -54,7 +56,7 @@ fn eth_test_simple() {
         let force_overwrite = true;
 
         println!("Running powdr-riscv executor...");
-        riscv_executor::execute::<GoldilocksField>(&asm_contents, &data, &vec![]);
+        riscv_executor::execute::<GoldilocksField>(&asm_contents, &data, &vec![], ExecMode::Fast);
         /*
         println!("Compiling powdr-asm...");
         let _result = compile_asm_string_with_callback(

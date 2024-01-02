@@ -8,3 +8,8 @@ default-members = ["bin"]
 [profile.release-with-symbols]
 inherits = "release"
 debug = true
+
+[patch.crates-io]
+# use optimized risc0 circuit
+revm = { git = "https://github.com/johntaiko/revm", branch = "feat/taiko" }
+revm-primitives = { git = "https://github.com/johntaiko/revm", branch = "feat/taiko" }
